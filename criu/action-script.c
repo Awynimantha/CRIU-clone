@@ -32,4 +32,16 @@ static int run_shell_scripts(const char *action ) {
     int retval = 0;
     struct script *script;
     static unsigned env_set = 0;
+	#define ENV_IMGDIR 0x1
+	#define ENV_ROOTPID 0x2
+
+	if(list_empty(&scripts))
+		return 0;
+	if(!(env_set & ENV_IMGDIR)) {
+		char image_dir[PATH_MAX];
+		sprintf(image_dir, "/proc/%ld/fd/%d", (long)getpid(), get_service_fd(IMG_FD_OFF));
+		if (setenv("CRTOOLS_IMAGE_DIR", image_dir, 1)) {
+			pr_perror("Can't set CRTOOLS_IMAGE_DIR=")	
+		}
+	}
 }
