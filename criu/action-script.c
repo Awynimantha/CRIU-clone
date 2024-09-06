@@ -1,5 +1,8 @@
 #include "action-scripts.h"
 #include "common/list.h"
+#include "xmalloc.h"
+#include "log.h"
+#include "servicefd.h"
 
 static const char *action_names[ACT_MAX] = {
 	[ACT_PRE_STREAM] = "pre-stream",
@@ -41,7 +44,7 @@ static int run_shell_scripts(const char *action ) {
 		char image_dir[PATH_MAX];
 		sprintf(image_dir, "/proc/%ld/fd/%d", (long)getpid(), get_service_fd(IMG_FD_OFF));
 		if (setenv("CRTOOLS_IMAGE_DIR", image_dir, 1)) {
-			pr_perror("Can't set CRTOOLS_IMAGE_DIR=")	
-		}
+			pr_perror("Can't set CRTOOLS_IMAGE_DIR=");	
+		};\
 	}
 }
