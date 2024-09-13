@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "int.h": "c"
+        "int.h": "c",
+        "xmalloc.h": "c"
     }
 }

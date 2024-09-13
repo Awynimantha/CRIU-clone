@@ -21,3 +21,9 @@
 #include<sys/utsname.h>
 
 #include "int.h"
+
+void flush_early_log_to_stderr(void) __attribute__((destruct));
+
+void flush_early_log_to_stderr(void) {
+    flush_early_log_buffers(STDERR_FILENO);
+}

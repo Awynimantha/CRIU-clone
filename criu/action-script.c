@@ -3,6 +3,7 @@
 #include "xmalloc.h"
 #include "log.h"
 #include "servicefd.h"
+#include "cr-service.h"
 
 static const char *action_names[ACT_MAX] = {
 	[ACT_PRE_STREAM] = "pre-stream",
